@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+}
+
+.contenido {
+  padding:20px;
+}
+
+.contenido-principal {
+  border:solid 1px lightgray;
+  background-color: rgba(225, 225, 225, 0.2);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+h3 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 80;
+  color:#004e92;
+  margin-bottom:30px;
+  text-align: center;
+}
+
+.campo {
+  margin-bottom: 2rem;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+  height: 300px;
+  width: 40%;
+}
