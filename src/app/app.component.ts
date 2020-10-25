@@ -28,6 +28,17 @@ export class AppComponent {
     this.cantidadGasto = 0;
   }
 
+  eliminarGasto(gasto: Gasto): void {
+    this.gastos = this.gastos.filter(g => g !== gasto);
+    this.sumarPresupuesto(gasto);
+  }
+
+  sumarPresupuesto(gasto: Gasto): void {
+    let restante = Number(this.restante);
+    restante += gasto.cantidadGasto;
+    this.restante = String(restante);
+  }
+
   restarPresupuesto(): void {
     const gasto = Number(this.cantidadGasto);
     let restante = Number(this.restante);
