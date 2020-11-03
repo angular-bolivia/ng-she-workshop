@@ -1,0 +1,1 @@
+Colocar todos los recursos utilizados para el README del tutorial en este directorio.
