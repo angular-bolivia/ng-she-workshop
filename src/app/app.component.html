@@ -6,10 +6,10 @@
   <input type="submit" value="Ingresar Presupuesto" (click)="ingresarPresupuesto()">
 </div>
 <div *ngIf="existePresupuesto">
-  <header class="App"><h1>Gasto Semanal</h1></header>
+  <header class="encabezamiento"><h1>Gasto Semanal</h1></header>
   <div class="contenido-principal contenido">
-    <div class="row">
-      <div class="column">
+    <div class="fila">
+      <div class="columna">
         <h3>Agrega tus gastos aquí</h3>
         <div class="campo">
           <label>
@@ -26,14 +26,15 @@
         <input type="submit" value="Agregar" (click)="agregarGasto()">
       </div>
 
-      <div class="column">
+      <div class="columna">
         <div>
           <h3>Listado</h3>
-          <ul id="list=gasto">
+          <ul>
             <li *ngFor="let gasto of gastos; index as indice" class="gastos">
-              <div>
+              <div class="gasto">
                 {{gasto.nombreGasto}}
                 <span class="gasto">${{gasto.cantidadGasto}}</span>
+                <button (click)="eliminarGasto(gasto)">Eliminar</button>
               </div>
             </li>
           </ul>

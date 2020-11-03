@@ -8,30 +8,27 @@ import { Gasto } from './gasto.model';
 })
 export class AppComponent {
   presupuesto = '';
-  restante = '';
+  restante = 0;
   existePresupuesto = false;
   nombreGasto = '';
   cantidadGasto = 0;
   gastos: Gasto[] = [];
 
   ingresarPresupuesto(): void {
-    this.restante = this.presupuesto;
+    this.restante = Number(this.presupuesto);
     this.existePresupuesto = true;
   }
 
   agregarGasto(): void {
     const gasto = new Gasto(this.nombreGasto, this.cantidadGasto);
     this.gastos.push(gasto);
-    this.restarPresupuesto();
-    console.log(this.gastos);
+    this.restante -= this.cantidadGasto;
     this.nombreGasto = '';
     this.cantidadGasto = 0;
   }
 
-  restarPresupuesto(): void {
-    const gasto = Number(this.cantidadGasto);
-    let restante = Number(this.restante);
-    restante -= gasto;
-    this.restante = String(restante);
+  eliminarGasto(gasto: Gasto): void {
+    this.gastos = this.gastos.filter(g => g !== gasto);
+    this.restante += gasto.cantidadGasto;
   }
 }
