@@ -1,9 +1,5 @@
-.encabezamiento {
+.titulo {
   text-align: center;
-}
-
-.contenido {
-  padding:20px;
 }
 
 .contenido-principal {
@@ -13,11 +9,11 @@
   border-radius: 20px;
 }
 
-h3 {
+.subtitulo {
   font-family: 'Raleway', sans-serif;
   font-weight: 80;
-  color:#004e92;
-  margin-bottom:30px;
+  color: #004e92;
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -26,7 +22,7 @@ h3 {
 }
 
 .fila:after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }

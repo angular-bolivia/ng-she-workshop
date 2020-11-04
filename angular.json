@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-she-workshop"
+    }
+  },
+  "defaultProject": "ng-she-workshop",
+  "cli": {
+    "analytics": false
+  }
 }

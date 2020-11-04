@@ -1,49 +1,54 @@
-<div *ngIf="!existePresupuesto" class="contenido-principal contenido">
+<div *ngIf="!existePresupuesto" class="contenido-principal">
   <label>
-    Presupuesto
-    <input [(ngModel)]="presupuesto" type="number">
+    Presupuesto:
   </label>
-  <input type="submit" value="Ingresar Presupuesto" (click)="ingresarPresupuesto()">
+  <input type="number" (keyup.enter)="ingresarPresupuesto()" [(ngModel)]="presupuesto">
+  <button (click)="ingresarPresupuesto()">
+    Ingresar Presupuesto
+  </button>
 </div>
+
 <div *ngIf="existePresupuesto">
-  <header class="encabezamiento"><h1>Gasto Semanal</h1></header>
-  <div class="contenido-principal contenido">
+  <h1 class="titulo">Gasto Semanal</h1>
+  <div class="contenido-principal">
     <div class="fila">
       <div class="columna">
-        <h3>Agrega tus gastos aquí</h3>
+        <h3 class="subtitulo">Agrega tus gastos aquí</h3>
         <div class="campo">
           <label>
-            Nombre Gasto
-            <input [(ngModel)]="nombreGasto" type="text" />
+            Nombre del Gasto:
           </label>
+          <input type="text" [(ngModel)]="nombreGasto" (keyup.enter)="agregarGasto()">
         </div>
         <div class="campo">
           <label>
-            Cantidad
-            <input [(ngModel)]="cantidadGasto" type="number" />
+            Cantidad:
           </label>
+          <input type="number" [(ngModel)]="cantidadGasto" (keyup.enter)="agregarGasto()">
         </div>
-        <input type="submit" value="Agregar" (click)="agregarGasto()">
+        <button (click)="agregarGasto()">
+          Agregar
+        </button>
       </div>
 
       <div class="columna">
         <div>
-          <h3>Listado</h3>
+          <h3 class="subtitulo">Listado</h3>
           <ul>
             <li *ngFor="let gasto of gastos; index as indice" class="gastos">
               <div class="gasto">
                 {{gasto.nombreGasto}}
                 <span class="gasto">${{gasto.cantidadGasto}}</span>
-                <button (click)="eliminarGasto(gasto)">Eliminar</button>
+                <button (click)="eliminarGasto(indice, gasto.cantidadGasto)">Eliminar</button>
               </div>
             </li>
           </ul>
         </div>
         <div>
-          <span>Presupuesto: $ {{presupuesto}}</span>
+          <span>Presupuesto: ${{presupuesto}}</span>
         </div>
         <div>
-         <span>Restante: $ {{restante}}</span>
+          <span>Restante: ${{restante}}</span>
         </div>
       </div>
     </div>
