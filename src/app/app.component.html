@@ -1,34 +1,82 @@
-<div *ngIf="!existePresupuesto" class="contenido-principal">
-  <label>
-    Presupuesto:
-  </label>
-  <input type="number" (keyup.enter)="ingresarPresupuesto()" [(ngModel)]="presupuesto">
-  <button (click)="ingresarPresupuesto()">
-    Ingresar Presupuesto
-  </button>
+<div class="contenedor-principal">
+  <div class="form-presupuesto">
+    <label>Presupuesto: </label>
+    <input
+      type="number"
+      (keyup.enter)="ingresarPresupuesto()"
+      [readonly]="existePresupuesto"
+      [(ngModel)]="presupuesto"
+    />
+    <button (click)="ingresarPresupuesto()" *ngIf="!existePresupuesto">
+      Ingresar Presupuesto
+    </button>
+  </div>
+
+  <div class="form-gasto">
+    <h3 class="subtitulo">Agrega tus gastos aquí</h3>
+    <div class="campo">
+      <label> Nombre del Gasto: </label>
+      <input
+        type="text"
+        [(ngModel)]="nombreGasto"
+        (keyup.enter)="agregarGasto()"
+      />
+    </div>
+    <div class="campo">
+      <label> Cantidad: </label>
+      <input
+        type="number"
+        [(ngModel)]="cantidadGasto"
+        (keyup.enter)="agregarGasto()"
+      />
+    </div>
+    <button (click)="agregarGasto()">Agregar</button>
+  </div>
+
+  <div class="contenedor-lista">
+    <div>
+      <span>Restante: ${{ restante }}</span>
+    </div>
+
+    <div>
+      <ul>
+        <li *ngFor="let gasto of gastos; index as indice" class="gastos">
+          <div class="gasto">
+            {{ gasto.nombreGasto }}
+            <span class="gasto">${{ gasto.cantidadGasto }}</span>
+            <button (click)="eliminarGasto(indice, gasto.cantidadGasto)">
+              Eliminar
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<div *ngIf="existePresupuesto">
+<!-- <div *ngIf="existePresupuesto">
   <h1 class="titulo">Gasto Semanal</h1>
   <div class="contenido-principal">
     <div class="fila">
       <div class="columna">
         <h3 class="subtitulo">Agrega tus gastos aquí</h3>
         <div class="campo">
-          <label>
-            Nombre del Gasto:
-          </label>
-          <input type="text" [(ngModel)]="nombreGasto" (keyup.enter)="agregarGasto()">
+          <label> Nombre del Gasto: </label>
+          <input
+            type="text"
+            [(ngModel)]="nombreGasto"
+            (keyup.enter)="agregarGasto()"
+          />
         </div>
         <div class="campo">
-          <label>
-            Cantidad:
-          </label>
-          <input type="number" [(ngModel)]="cantidadGasto" (keyup.enter)="agregarGasto()">
+          <label> Cantidad: </label>
+          <input
+            type="number"
+            [(ngModel)]="cantidadGasto"
+            (keyup.enter)="agregarGasto()"
+          />
         </div>
-        <button (click)="agregarGasto()">
-          Agregar
-        </button>
+        <button (click)="agregarGasto()">Agregar</button>
       </div>
 
       <div class="columna">
@@ -37,20 +85,22 @@
           <ul>
             <li *ngFor="let gasto of gastos; index as indice" class="gastos">
               <div class="gasto">
-                {{gasto.nombreGasto}}
-                <span class="gasto">${{gasto.cantidadGasto}}</span>
-                <button (click)="eliminarGasto(indice, gasto.cantidadGasto)">Eliminar</button>
+                {{ gasto.nombreGasto }}
+                <span class="gasto">${{ gasto.cantidadGasto }}</span>
+                <button (click)="eliminarGasto(indice, gasto.cantidadGasto)">
+                  Eliminar
+                </button>
               </div>
             </li>
           </ul>
         </div>
         <div>
-          <span>Presupuesto: ${{presupuesto}}</span>
+          <span>Presupuesto: ${{ presupuesto }}</span>
         </div>
         <div>
-          <span>Restante: ${{restante}}</span>
+          <span>Restante: ${{ restante }}</span>
         </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->
