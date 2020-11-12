@@ -1,5 +1,6 @@
 .contenedor-principal {
   height: 75vh;
+
   display: grid;
   justify-content: center;
   grid-template-columns: 400px 400px;
@@ -14,16 +15,19 @@
 
 .presupuesto label {
   font-size: 1.5em;
-  margin-bottom: 12px;
   font-weight: bold;
+
+  margin-bottom: 12px;
 }
 
 .form {
+  padding: 1em;
+
   background-color: white;
+  border-radius: 15px;
+
   color: black;
   font-family: "Montserrat", sans-serif;
-  padding: 1em;
-  border-radius: 15px;
 }
 
 .form button {
@@ -49,9 +53,11 @@
 }
 
 .gasto {
-  grid-row: 2/3;
   display: flex;
   flex-direction: column;
+
+  grid-row: 2/3;
+
   animation: gasto-animation 450ms;
   will-change: transform;
 }
@@ -91,19 +97,21 @@
 }
 
 .restante p {
-  margin: 0;
+  margin: 0 0 10px;
+
   font-size: 1.5em;
   font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .restante p:nth-child(2) {
-  font-size: 2em;
   margin: 0;
+
+  font-size: 2em;
 }
 
 .caja-lista {
   flex: 1;
+
   width: 100%;
 
   overflow-y: auto;
@@ -111,6 +119,7 @@
 
 .caja-lista ul {
   list-style: none;
+
   margin: 0;
   padding: 0;
 }
@@ -164,6 +173,7 @@
 
 .caja-lista ul li div button {
   cursor: pointer;
+
   background: none;
   border: none;
   outline: none;
@@ -204,6 +214,7 @@
 @media screen and (max-width: 825px) {
   .contenedor-principal {
     margin-top: 2em;
+
     grid-template-columns: 100%;
     grid-template-rows: auto auto 600px;
   }

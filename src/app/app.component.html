@@ -15,7 +15,7 @@
 
   <div class="form gasto" *ngIf="existePresupuesto">
     <h3>Agrega tus gastos aquí</h3>
-    <div class="campo">
+    <div>
       <label> Nombre del Gasto: </label>
       <input
         type="text"
@@ -24,7 +24,7 @@
         (keyup.enter)="agregarGasto()"
       />
     </div>
-    <div class="campo">
+    <div>
       <label> Cantidad: </label>
       <input
         type="number"
