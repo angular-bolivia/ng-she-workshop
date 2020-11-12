@@ -200,3 +200,18 @@
     opacity: 1;
   }
 }
+
+@media screen and (max-width: 825px) {
+  .contenedor-principal {
+    margin-top: 2em;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto 600px;
+  }
+
+  .presupuesto,
+  .contenedor-lista,
+  .caja-lista {
+    grid-row: auto;
+    grid-column: auto;
+  }
+}
