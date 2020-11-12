@@ -130,6 +130,18 @@
   margin-bottom: 1em;
 }
 
+.caja-lista ul li:nth-child(2n) {
+  background: linear-gradient(314.33deg, #18d0bf -3.69%, #1b9fb4 107.58%);
+}
+
+.caja-lista ul li:nth-child(3n) {
+  background: linear-gradient(
+    314.33deg,
+    hsl(244, 100%, 68%) -3.69%,
+    #7043c2 109.82%
+  );
+}
+
 .caja-lista ul li p {
   flex: 1;
   overflow-x: auto;
@@ -143,7 +155,7 @@
   align-items: center;
 }
 
-.caja-lista ul li div p {
+.caja-lista ul li div span {
   font-size: 1.5em;
   font-weight: 700;
 }
