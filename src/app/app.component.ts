@@ -25,17 +25,10 @@ export class AppComponent {
     this.existePresupuesto = true;
   }
 
-  restarGastos(): void {
-    this.gastos.forEach((gasto) => {
-      this.restante -= gasto.cantidadGasto;
-    });
-  }
-
   agregarGasto(): void {
     if (this.nombreGasto !== '') {
       const gasto = new Gasto(this.nombreGasto, this.cantidadGasto);
       this.gastos.push(gasto);
-      this.presupuestosService.agregarGasto(gasto);
       this.restante -= this.cantidadGasto;
       this.nombreGasto = '';
       this.cantidadGasto = 0;
@@ -45,5 +38,11 @@ export class AppComponent {
   eliminarGasto(indiceGasto: number, cantidadGasto: number): void {
     this.gastos.splice(indiceGasto, 1);
     this.restante += cantidadGasto;
+  }
+
+  private restarGastos(): void {
+    for (const gasto of this.gastos) {
+      this.restante -= gasto.cantidadGasto;
+    }
   }
 }

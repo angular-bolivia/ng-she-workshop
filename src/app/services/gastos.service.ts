@@ -20,8 +20,4 @@ export class GastosService {
   getGastos(): Gasto[] {
     return this.gastos;
   }
-
-  agregarGasto(gasto: Gasto): void {
-    this.gastos.push(gasto);
-  }
 }
