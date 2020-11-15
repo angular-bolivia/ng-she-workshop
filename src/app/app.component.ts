@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Gasto } from './gasto.model';
+import { GastosService } from './services/gastos.service';
 
 @Component({
   selector: 'app-root',
@@ -15,15 +16,26 @@ export class AppComponent {
   cantidadGasto = 0;
   gastos: Gasto[] = [];
 
+  constructor(private presupuestosService: GastosService) { }
+
   ingresarPresupuesto(): void {
     this.restante = this.presupuesto;
+    this.gastos = this.presupuestosService.getGastos();
+    this.restarGastos();
     this.existePresupuesto = true;
+  }
+
+  restarGastos(): void {
+    this.gastos.forEach((gasto) => {
+      this.restante -= gasto.cantidadGasto;
+    });
   }
 
   agregarGasto(): void {
     if (this.nombreGasto !== '') {
       const gasto = new Gasto(this.nombreGasto, this.cantidadGasto);
       this.gastos.push(gasto);
+      this.presupuestosService.agregarGasto(gasto);
       this.restante -= this.cantidadGasto;
       this.nombreGasto = '';
       this.cantidadGasto = 0;
