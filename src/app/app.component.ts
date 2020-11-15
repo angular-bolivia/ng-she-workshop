@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Gasto } from './gasto.model';
+import { GastosService } from './services/gastos.service';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,12 @@ export class AppComponent {
   cantidadGasto = 0;
   gastos: Gasto[] = [];
 
+  constructor(private presupuestosService: GastosService) { }
+
   ingresarPresupuesto(): void {
     this.restante = this.presupuesto;
+    this.gastos = this.presupuestosService.getGastos();
+    this.restarGastos();
     this.existePresupuesto = true;
   }
 
@@ -33,5 +38,11 @@ export class AppComponent {
   eliminarGasto(indiceGasto: number, cantidadGasto: number): void {
     this.gastos.splice(indiceGasto, 1);
     this.restante += cantidadGasto;
+  }
+
+  private restarGastos(): void {
+    for (const gasto of this.gastos) {
+      this.restante -= gasto.cantidadGasto;
+    }
   }
 }
