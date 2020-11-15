@@ -38,7 +38,7 @@
   <div class="contenedor-lista">
     <div class="restante" *ngIf="existePresupuesto">
       <p>Saldo disponible</p>
-      <p>{{ restante }} $</p>
+      <p>{{ restante }} Bs</p>
     </div>
 
     <div class="caja-lista">
@@ -46,7 +46,7 @@
         <li *ngFor="let gasto of gastos; index as indice">
           <p>{{ gasto.nombreGasto }}</p>
           <div>
-            <span>${{ gasto.cantidadGasto }} $</span>
+            <span>{{ gasto.cantidadGasto }} Bs</span>
             <button (click)="eliminarGasto(indice, gasto.cantidadGasto)">
               <img src="../assets/delete-icon.svg" alt="delete" />
             </button>
