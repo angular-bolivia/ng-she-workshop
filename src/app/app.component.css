@@ -1,23 +1,59 @@
 .contenedor-principal {
-  height: 75vh;
+  margin-top: 1em;
 
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  gap: 10px;
+}
+
+.contenedor-principal::before{
+  content: "Mis Gastos";
+  grid-column: 1/3;
+
+  display: flex;
+  width: 100%;
   justify-content: center;
-  grid-template-columns: 400px 400px;
-  grid-template-rows: 1fr 2fr;
-  gap: 1.5em;
+
+  font-family: "Open-Sans", sans-serif;
+  font-weight: bold;
+  font-size : 2em;
+  color: #4F5B62;
 }
 
 .presupuesto {
+  grid-column: 1/3;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+
+.presupuesto::before{
+  display: block;
+  width: 75%;
+
+  content: "Agrega tu prepuesto mensual y el tipo de moneda en el que quieras hacer todos los calculos.";
+
+  margin-bottom: 1em;
 }
 
 .presupuesto label {
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: bold;
+  width: 100%;
+
+  color: #4F5B62;
 
   margin-bottom: 12px;
+}
+
+.presupuesto input {
+  flex: 1;
+
+  height: 54px;
+
+  margin: 0;
+  margin-right: 0.5em;
 }
 
 .form {
@@ -27,12 +63,12 @@
   border-radius: 15px;
 
   color: black;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .form button {
   width: 120px;
-  height: 35px;
+  height: 55px;
 
   color: white;
   font-weight: 700;
@@ -42,58 +78,81 @@
   border-radius: 5px;
   outline: none;
 
-  background: linear-gradient(90deg, #ec008c 0%, #fc6767 100%);
-  box-shadow: inset 0px -3px 0px rgba(0, 0, 0, 0.5);
-  transition: 200ms;
+  background-color: #00CAEE;
   cursor: pointer;
 }
 
-.form button:active {
-  box-shadow: none;
-}
-
 .gasto {
+  position: relative;
+
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-end;
 
-  grid-row: 2/3;
+  grid-column: 1/3;
 
-  animation: gasto-animation 450ms;
-  will-change: transform;
+  margin-top: 3.5em;
 }
 
 .gasto h3 {
+  position: absolute;
+  top: -1em;
+  left: 0;
+
+  color: #4F5B62;
+
+  width: 100%;
+
+  margin-top: -20px;
+
   font-size: 1.5em;
 }
 
+.gasto div {
+  flex: 2;
+  margin-right: 0.5em;
+}
+
+.gasto div input {
+  margin-bottom: 0px;
+}
+
+.gasto button {
+  flex: 1;
+  height: 40px;
+}
+
 .gasto label {
-  font-weight: 700;
+  font-size: 0.75em;
 }
 
 .contenedor-lista {
-  grid-row: 1/3;
-  grid-column: 2/3;
-
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-column: 1/3;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 300px;
+  gap: 0.75em;
 }
 
 .restante {
   width: 100%;
-  height: 150px;
-  margin-bottom: 1em;
+  height: 300px;
+
+  grid-column: 2/3;
+
+  padding: 10px;
+  box-sizing: border-box;
+
+  text-align: center;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  background: linear-gradient(90deg, #b172f7 0%, #236afa 100%);
-  border-radius: 16px;
-
-  animation: restante-animation 450ms 450ms forwards;
-  transform: translateY(-1000px);
-  will-change: transform;
+  background: #92CA56;
+  color: white;
+  border-radius: 11px;
 }
 
 .restante p {
@@ -110,9 +169,16 @@
 }
 
 .caja-lista {
-  flex: 1;
-
   width: 100%;
+  height: 100%;
+
+  margin-bottom: 2em;
+
+  background-color: white;
+  border-radius: 11px;
+
+  grid-column: 1/2;
+  grid-row: 1/2;
 
   overflow-y: auto;
 }
@@ -121,44 +187,39 @@
   list-style: none;
 
   margin: 0;
-  padding: 0;
+  padding: 0px;
+
+  padding-top: 10px;
+}
+
+.caja-lista ul::before{
+  content: "Lista de gastos";
+  font-weight: 700;
+  color: #4F5B62;
+
+  margin: 10px;
+  margin-top: 1em;
 }
 
 .caja-lista ul li {
   display: flex;
   justify-content: space-between;
-  min-height: 100px;
+
   max-width: 100%;
 
-  background: linear-gradient(314.33deg, #ed4257 -3.69%, #ce1862 109.82%);
-  border-radius: 15px;
-  animation: item-in 450ms;
-  will-change: opacity;
-
-  padding: 0.6em 1em;
+  padding: 0em 1em;
   box-sizing: border-box;
-
-  margin-bottom: 1em;
-}
-
-.caja-lista ul li:nth-child(2n) {
-  background: linear-gradient(314.33deg, #18d0bf -3.69%, #1b9fb4 107.58%);
-}
-
-.caja-lista ul li:nth-child(3n) {
-  background: linear-gradient(
-    314.33deg,
-    hsl(244, 100%, 68%) -3.69%,
-    #7043c2 109.82%
-  );
 }
 
 .caja-lista ul li p {
   flex: 1;
+
   overflow-x: auto;
 
   display: flex;
   align-items: center;
+
+  font-size: 14px;
 }
 
 .caja-lista ul li div {
@@ -167,7 +228,7 @@
 }
 
 .caja-lista ul li div span {
-  font-size: 1.5em;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -180,49 +241,12 @@
 }
 
 .caja-lista ul li div button img {
-  width: 35px;
+  width: 16px;
 }
 
-@keyframes gasto-animation {
-  from {
-    transform: translateX(-1000px);
-  }
-  to {
-    transform: translateX(0%);
-  }
-}
-
-@keyframes restante-animation {
-  from {
-    transform: translateY(-1000px);
-  }
-  to {
-    transform: translateY(0%);
-  }
-}
-
-@keyframes item-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@media screen and (max-width: 825px) {
-  .contenedor-principal {
-    margin-top: 2em;
-
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto 600px;
-  }
-
-  .presupuesto,
-  .contenedor-lista,
-  .caja-lista {
-    grid-row: auto;
-    grid-column: auto;
+@media screen and (max-width: 505px) {
+  .contenedor-principal{
+    width: 100%;
+    padding: 0 10%;
   }
 }
