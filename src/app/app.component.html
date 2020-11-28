@@ -1,32 +1,36 @@
 <div class="contenedor-principal">
   <div class="form presupuesto">
-    <label>Ingresa tu Presupuesto:</label>
+    <label for="presupuesto">Ingresa tu presupuesto:</label>
     <input
+      id="presupuesto"
       type="number"
-      min="0"
-      (keyup.enter)="ingresarPresupuesto()"
-      [readonly]="existePresupuesto"
       [(ngModel)]="presupuesto"
+      (keyup.enter)="ingresarSaldoInicial()"
+      [readonly]="saldoInicialIngresado"
     />
-    <button (click)="ingresarPresupuesto()" *ngIf="!existePresupuesto">
+    <button
+      (click)="ingresarSaldoInicial()"
+      *ngIf="!saldoInicialIngresado"
+    >
       Listo
     </button>
   </div>
 
-  <div class="form gasto" *ngIf="existePresupuesto">
+  <div class="form gasto" *ngIf="saldoInicialIngresado">
     <h3>Agrega tus gastos aquí</h3>
     <div>
-      <label> Nombre del Gasto: </label>
+      <label for="nombre-gasto">Nombre:</label>
       <input
+        id="nombre-gasto"
         type="text"
-        placeholder="nombre del Gasto"
         [(ngModel)]="nombreGasto"
         (keyup.enter)="agregarGasto()"
       />
     </div>
     <div>
-      <label> Cantidad: </label>
+      <label for="cantidad-gasto">Cantidad:</label>
       <input
+        id="cantidad-gasto"
         type="number"
         [(ngModel)]="cantidadGasto"
         (keyup.enter)="agregarGasto()"
@@ -35,19 +39,19 @@
     <button (click)="agregarGasto()">Listo</button>
   </div>
 
-  <div class="contenedor-lista">
-    <div class="restante" *ngIf="existePresupuesto">
+  <div class="contenedor-lista" *ngIf="saldoInicialIngresado">
+    <div class="restante">
       <p>Saldo disponible</p>
-      <p>{{ restante }} Bs</p>
+      <p>{{saldo}} Bs</p>
     </div>
 
     <div class="caja-lista">
       <ul>
         <li *ngFor="let gasto of gastos; index as indice">
-          <p>{{ gasto.nombreGasto }}</p>
+          <p>{{gasto.nombre}}</p>
           <div>
-            <span>{{ gasto.cantidadGasto }} Bs</span>
-            <button (click)="eliminarGasto(indice, gasto.cantidadGasto)">
+            <span>{{gasto.cantidad}} Bs</span>
+            <button (click)="eliminarGasto(indice, gasto.cantidad)">
               <img src="https://raw.githubusercontent.com/angular-bolivia/ng-she-workshop/develop/src/assets/trash-icon.svg" alt="Eliminar gasto" />
             </button>
           </div>

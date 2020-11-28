@@ -9,27 +9,27 @@ import { GastosService } from './services/gastos.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  presupuesto = 0;
-  restante = 0;
-  existePresupuesto = false;
-  nombreGasto = '';
+  nombreGasto = "";
   cantidadGasto = 0;
-  gastos: Gasto[] = [];
+  gastos = [];
+  presupuesto = 0;
+  saldo = 0;
+  saldoInicialIngresado = false;
 
   constructor(private presupuestosService: GastosService) { }
 
-  ingresarPresupuesto(): void {
-    this.restante = this.presupuesto;
+  ingresarSaldoInicial(): void {
+    this.saldo = this.presupuesto;
     this.gastos = this.presupuestosService.getGastos();
     this.restarGastos();
-    this.existePresupuesto = true;
+    this.saldoInicialIngresado = true;
   }
 
   agregarGasto(): void {
     if (this.nombreGasto !== '') {
       const gasto = new Gasto(this.nombreGasto, this.cantidadGasto);
       this.gastos.push(gasto);
-      this.restante -= this.cantidadGasto;
+      this.saldo -= this.cantidadGasto;
       this.nombreGasto = '';
       this.cantidadGasto = 0;
     }
@@ -37,12 +37,12 @@ export class AppComponent {
 
   eliminarGasto(indiceGasto: number, cantidadGasto: number): void {
     this.gastos.splice(indiceGasto, 1);
-    this.restante += cantidadGasto;
+    this.saldo += cantidadGasto;
   }
 
   private restarGastos(): void {
     for (const gasto of this.gastos) {
-      this.restante -= gasto.cantidadGasto;
+      this.saldo -= gasto.cantidad;
     }
   }
 }

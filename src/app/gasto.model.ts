@@ -1,9 +1,9 @@
 export class Gasto {
-  nombreGasto: string;
-  cantidadGasto: number;
+  nombre: string;
+  cantidad: number;
 
   constructor(nombreGasto: string, cantidadGasto: number) {
-    this.nombreGasto = nombreGasto;
-    this.cantidadGasto = cantidadGasto;
+    this.nombre = nombreGasto;
+    this.cantidad = cantidadGasto;
   }
 }
