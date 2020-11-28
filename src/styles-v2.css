@@ -74,7 +74,7 @@ input::placeholder {
   display: block;
   width: 75%;
 
-  content: "Agrega tu prepuesto mensual y el tipo de moneda en el que quieras hacer todos los calculos.";
+  content: "Agrega tu prepuesto mensual.";
 
   margin-bottom: 1em;
 }
