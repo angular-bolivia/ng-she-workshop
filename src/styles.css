@@ -15,7 +15,7 @@ body {
   min-width: 100%;
 
   background-color: #1c162e;
-  background-image: url("./assets/bg.svg");
+  background-image: url("https://raw.githubusercontent.com/angular-bolivia/ng-she-workshop/develop/src/assets/bg.svg");
   background-repeat: no-repeat;
   background-position: bottom center;
   background-size: contain;
